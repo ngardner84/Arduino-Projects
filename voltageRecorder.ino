@@ -51,11 +51,8 @@ void writeVoltage(){
   voltageFile = SD.open("voltage.txt", FILE_WRITE);
   //check to make sure the file opened
   if (voltageFile){
-    Serial.println("Writing voltage level and timestamp");
-    voltageFile.print("Voltage: ");
+    Serial.println("Writing voltage level");
     voltageFile.println(getVoltage());
-    voltageFile.print("Time: ");
-    voltageFile.println(getTime());
     //close file
     voltageFile.close();
     Serial.println("Finished writing");
@@ -76,6 +73,7 @@ float getTime(){
 
 void loop() {
     writeVoltage();
+    Serial.println(getVoltage());
     delay(5000);
     
 }
